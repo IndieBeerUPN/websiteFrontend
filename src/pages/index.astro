@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import heroImg from '../assets/hero.jpg'
+import mesasImg from '../assets/mesas.jpg'
+import refriImg from '../assets/refri.jpg'
 ---
 
 <Layout title="Indie Beer">
@@ -52,6 +54,21 @@ import heroImg from '../assets/hero.jpg'
 				  </div>
 				</div>
 			  </div>
+		</section>
+
+		<!-- ABOUT SECTION -->
+		<section class="">
+			<div class="gap-1 items-center py-4 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:px-6">
+				<div class="font-light text-white sm:text-lg	mr-12">
+					<h2 class="mb-4 text-5xl tracking-tight font-extrabold text-white">Experiencias unicas con cheves unicas</h2>
+					<p class="mb-2">¡Bienvenidos a Indie Beer Upn! En un mundo lleno de sabores genéricos, hemos creado un santuario para los amantes de la cerveza que buscan algo único, auténtico y lleno de carácter. En cada vaso, encontrarás la pasión de los maestros cerveceros nacionales e internacionales que han dedicado horas de esfuerzo y creatividad para traerte una experiencia que despierta tus sentidos.</p>
+					<p>Sumérgete en nuestro ambiente acogedor, donde la buena conversación fluye tan libremente como nuestras cervezas. Nuestro equipo está aquí para guiarte a través de un viaje de descubrimiento, desde los clásicos hasta las últimas creaciones innovadoras.</p>
+				</div>
+				<div class="grid grid-cols-2 gap-4 mt-8">
+					<Image src={mesasImg} alt="refrigerador" width={592} class="w-full rounded-lg"/>
+					<Image src={refriImg} alt="refrigerador" width={592} class="mt-4 w-full lg:mt-10 rounded-lg"/>
+				</div>
+			</div>
 		</section>
 	</main>
 </Layout>
