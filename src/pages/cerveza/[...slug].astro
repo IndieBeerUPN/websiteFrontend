@@ -1,0 +1,41 @@
+---
+import fetchApi from "../../lib/strapi";
+import Layout from "../../layouts/Layout.astro";
+import type CervezaProps from "../../interfaces/cerveza";
+import cervezasPageHero from '../../assets/cervezasPageHero.jpg';
+import { Image } from "astro:assets";
+
+
+export async function getStaticPaths() {
+    const cervezas = await fetchApi<CervezaProps[]>({
+        endpoint:'cervezas?populate=*',
+	    wrappedByKey: 'data',
+    });
+
+    return cervezas.map(cerveza => ({
+        params : {
+            slug:cerveza.attributes.Slug
+        },
+        props : {
+            Nombre:cerveza.attributes.Nombre, 
+            Descripcion:cerveza.attributes.Descripcion
+        }
+    }))
+}
+
+const { Nombre, Descripcion } = Astro.props;
+---
+
+<Layout title="Indie Beer">
+    <main>
+        <section class="relative h-[30rem] text-white overflow-hidden">
+            <div class="absolute -translate-y-20">
+              <Image src={cervezasPageHero} alt="Hero" width={1920} class="object-cover object-center w-full h-full"/>
+              <div class="absolute inset-0 bg-black opacity-[0.5]"></div>
+            </div>
+            <div class="relative z-10 flex flex-col justify-center items-center h-full text-center">
+              <h1 class="text-8xl leading-tight">Cervezas</h1>
+            </div>
+          </section>
+    </main>
+</Layout>
