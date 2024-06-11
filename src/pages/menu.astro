@@ -26,38 +26,203 @@ const cerveza = await fetchApi<CervezaProps[]>({
 
      <!-- Products Section -->
       <section class="mt-16 text-white">
-        <h2 class="text-center mb-16 text-4xl tracking-tight font-extrabold ">¿Que te vas a pedir?</h2>            
+        <h2 class="text-center mb-12 text-4xl tracking-tight font-extrabold ">¿Que te vas a pedir?</h2>            
         <div class="text-center text-3xl font-extrabold mb-8">Los favoritos de la raza</div>
         <div class="flex flex-row items-center justify-center gap-8 mb-40">
-            <div class="relative w-64 h-64">
-                <img src="https://via.placeholder.com/256" alt="Rounded Image" class="rounded-full object-cover w-full h-full mb-4">
-                <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-">Hamburgesa</h3>
-                <p class="mt-1 flex justify-center text-base">lorem50</p>
-                <hr class="mt-4 h-[0.1rem] border-t-0 bg-white"/>
-                <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-2">$140</h3>
-            </div>
-            <div class="relative w-64 h-64">
-                <img src="https://via.placeholder.com/256" alt="Rounded Image" class="rounded-full object-cover w-full h-full mb-4">
-                <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-">Hamburgesa</h3>
-                <p class="mt-1 flex justify-center text-base">lorem50</p>
-                <hr class="mt-4 h-[0.1rem] border-t-0 bg-white"/>
-                <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-2">$140</h3>
-            </div>
-            <div class="relative w-64 h-64">
-                <img src="https://via.placeholder.com/256" alt="Rounded Image" class="rounded-full object-cover w-full h-full mb-4">
-                <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-">Hamburgesa</h3>
-                <p class="mt-1 flex justify-center text-base">lorem50</p>
-                <hr class="mt-4 h-[0.1rem] border-t-0 bg-white"/>
-                <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-2">$140</h3>
-            </div>
-            <div class="relative w-64 h-64">
-                <img src="https://via.placeholder.com/256" alt="Rounded Image" class="rounded-full object-cover w-full h-full mb-4">
-                <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-">Hamburgesa</h3>
-                <p class="mt-1 flex justify-center text-base">lorem50</p>
-                <hr class="mt-4 h-[0.1rem] border-t-0 bg-white"/>
-                <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-2">$140</h3>
-            </div>
+          <div class="relative w-64 h-64">
+            <img src="https://via.placeholder.com/256" alt="Rounded Image" class="rounded-full object-cover w-full h-full mb-4">
+            <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-">Hamburgesa</h3>
+            <p class="mt-1 flex justify-center text-base">lorem50</p>
+            <hr class="mt-4 h-[0.1rem] border-t-0 bg-white"/>
+            <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-2">$140</h3>
+          </div>
+          <div class="relative w-64 h-64">
+            <img src="https://via.placeholder.com/256" alt="Rounded Image" class="rounded-full object-cover w-full h-full mb-4">
+            <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-">Hamburgesa</h3>
+            <p class="mt-1 flex justify-center text-base">lorem50</p>
+            <hr class="mt-4 h-[0.1rem] border-t-0 bg-white"/>
+            <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-2">$140</h3>
+          </div>
+          <div class="relative w-64 h-64">
+            <img src="https://via.placeholder.com/256" alt="Rounded Image" class="rounded-full object-cover w-full h-full mb-4">
+            <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-">Hamburgesa</h3>
+            <p class="mt-1 flex justify-center text-base">lorem50</p>
+            <hr class="mt-4 h-[0.1rem] border-t-0 bg-white"/>
+            <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-2">$140</h3>
+          </div>
         </div>
+
+        <div class="flex items-start mx-40">
+          <div class="grid grid-cols-4 w-full">
+            <div class="col-span-2 ms-16">
+              <h2 class="text-center mb-8 text-4xl tracking-tight font-extrabold ">A la plancha</h2>            
+              <div class="flex flex-row mb-4">
+                <div>
+                  <div class=" flex flex-row justify-between gap-20">
+                    <h3 class="text-2xl font-medium text-white">Red Pepper Crispy Egg</h3>
+                    <h3 class="text-2xl font-medium text-white">$140</h3>
+                  </div>
+                  <p class="">lorem50</p> 
+                </div>
+              </div>
+              <div class="flex flex-row mb-4">
+                <div>
+                  <div class=" flex flex-row justify-between gap-20">
+                    <h3 class="text-2xl font-medium text-white">Red Pepper Crispy Egg</h3>
+                    <h3 class="text-2xl font-medium text-white">$140</h3>
+                  </div>
+                  <p class="">lorem50</p> 
+                </div>
+              </div>
+              <div class="flex flex-row mb-4">
+                <div>
+                  <div class=" flex flex-row justify-between gap-20">
+                    <h3 class="text-2xl font-medium text-white">Red Pepper Crispy Egg</h3>
+                    <h3 class="text-2xl font-medium text-white">$140</h3>
+                  </div>
+                  <p class="">lorem50</p> 
+                </div>
+              </div>
+              <div class="flex flex-row mb-4">
+                <div>
+                  <div class=" flex flex-row justify-between gap-20">
+                    <h3 class="text-2xl font-medium text-white">Red Pepper Crispy Egg</h3>
+                    <h3 class="text-2xl font-medium text-white">$140</h3>
+                  </div>
+                  <p class="">lorem50</p> 
+                </div>
+              </div>
+            </div>
+
+            <div class="col-span-2">
+              <h2 class="text-center mb-8 text-4xl tracking-tight font-extrabold ">Snacks</h2>            
+              <div class="grid grid-cols-2 gap-4">
+                <div class="flex flex-row">
+                  <div>
+                    <div class=" flex flex-row justify-between gap-20">
+                      <h3 class="font-medium text-white">Red Pepper Crispy Egg</h3>
+                      <h3 class="font-medium text-white">$140</h3>
+                    </div>
+                    <p class="">lorem50</p> 
+                    <hr class="mt-2 h-[0.1rem] border-t-0 bg-white"/>
+                  </div>
+                </div>
+                <div class="flex flex-row">
+                  <div>
+                    <div class=" flex flex-row justify-between gap-20">
+                      <h3 class="font-medium text-white">Red Pepper Crispy Egg</h3>
+                      <h3 class="font-medium text-white">$140</h3>
+                    </div>
+                    <p class="">lorem50</p> 
+                    <hr class="mt-2 h-[0.1rem] border-t-0 bg-white"/>
+                  </div>
+                </div>
+                <div class="flex flex-row">
+                  <div>
+                    <div class=" flex flex-row justify-between gap-20">
+                      <h3 class="font-medium text-white">Red Pepper Crispy Egg</h3>
+                      <h3 class="font-medium text-white">$140</h3>
+                    </div>
+                    <p class="">lorem50</p> 
+                    <hr class="mt-2 h-[0.1rem] border-t-0 bg-white"/>
+                  </div>
+                </div>    
+                <div class="flex flex-row">
+                  <div>
+                    <div class=" flex flex-row justify-between gap-20">
+                      <h3 class="font-medium text-white">Red Pepper Crispy Egg</h3>
+                      <h3 class="font-medium text-white">$140</h3>
+                    </div>
+                    <p class="">lorem50</p> 
+                    <hr class="mt-2 h-[0.1rem] border-t-0 bg-white"/>
+                  </div>
+                </div>    
+                <div class="flex flex-row">
+                  <div>
+                    <div class=" flex flex-row justify-between gap-20">
+                      <h3 class="font-medium text-white">Red Pepper Crispy Egg</h3>
+                      <h3 class="font-medium text-white">$140</h3>
+                    </div>
+                    <p class="">lorem50</p> 
+                    <hr class="mt-2 h-[0.1rem] border-t-0 bg-white"/>
+                  </div>
+                </div>    
+                <div class="flex flex-row">
+                  <div>
+                    <div class=" flex flex-row justify-between gap-20">
+                      <h3 class="font-medium text-white">Red Pepper Crispy Egg</h3>
+                      <h3 class="font-medium text-white">$140</h3>
+                    </div>
+                    <p class="">lorem50</p> 
+                    <hr class="mt-2 h-[0.1rem] border-t-0 bg-white"/>
+                  </div>
+                </div>    
+                <div class="flex flex-row">
+                  <div>
+                    <div class=" flex flex-row justify-between gap-20">
+                      <h3 class="font-medium text-white">Red Pepper Crispy Egg</h3>
+                      <h3 class="font-medium text-white">$140</h3>
+                    </div>
+                    <p class="">lorem50</p> 
+                    <hr class="mt-2 h-[0.1rem] border-t-0 bg-white"/>
+                  </div>
+                </div>    
+                <div class="flex flex-row">
+                  <div>
+                    <div class=" flex flex-row justify-between gap-20">
+                      <h3 class="font-medium text-white">Red Pepper Crispy Egg</h3>
+                      <h3 class="font-medium text-white">$140</h3>
+                    </div>
+                    <p class="">lorem50</p> 
+                    <hr class="mt-2 h-[0.1rem] border-t-0 bg-white"/>
+                  </div>
+                </div>    
+                <div class="flex flex-row">
+                  <div>
+                    <div class=" flex flex-row justify-between gap-20">
+                      <h3 class="font-medium text-white">Red Pepper Crispy Egg</h3>
+                      <h3 class="font-medium text-white">$140</h3>
+                    </div>
+                    <p class="">lorem50</p> 
+                    <hr class="mt-2 h-[0.1rem] border-t-0 bg-white"/>
+                  </div>
+                </div>    
+                <div class="flex flex-row">
+                  <div>
+                    <div class=" flex flex-row justify-between gap-20">
+                      <h3 class="font-medium text-white">Red Pepper Crispy Egg</h3>
+                      <h3 class="font-medium text-white">$140</h3>
+                    </div>
+                    <p class="">lorem50</p> 
+                    <hr class="mt-2 h-[0.1rem] border-t-0 bg-white"/>
+                  </div>
+                </div>    
+                <div class="flex flex-row">
+                  <div>
+                    <div class=" flex flex-row justify-between gap-20">
+                      <h3 class="font-medium text-white">Red Pepper Crispy Egg</h3>
+                      <h3 class="font-medium text-white">$140</h3>
+                    </div>
+                    <p class="">lorem50</p> 
+                    <hr class="mt-2 h-[0.1rem] border-t-0 bg-white"/>
+                  </div>
+                </div>    
+                <div class="flex flex-row">
+                  <div>
+                    <div class=" flex flex-row justify-between gap-20">
+                      <h3 class="font-medium text-white">Red Pepper Crispy Egg</h3>
+                      <h3 class="font-medium text-white">$140</h3>
+                    </div>
+                    <p class="">lorem50</p> 
+                    <hr class="mt-2 h-[0.1rem] border-t-0 bg-white"/>
+                  </div>
+                </div>    
+
+              </div>
+            </div>
+          </div>
+        </div>
+
       </section>
   </main>
 </Layout>
