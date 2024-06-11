@@ -20,6 +20,7 @@ const cerveza = await fetchApi<CervezaProps[]>({
 		<section class="relative h-dvh text-white overflow-hidden">
 			<div class="absolute inset-0">
 				<Image src={heroImg} alt="Hero" width={1920} class="object-cover object-center w-full h-full"/>
+				<div class="absolute inset-0 bg-gradient-to-b from-black from-15%"></div>
 				<div class="absolute inset-0 bg-black opacity-[0.5]"></div>
 			</div>
 			<div class="relative z-10 flex flex-col justify-center items-center h-full text-center">
@@ -91,7 +92,7 @@ const cerveza = await fetchApi<CervezaProps[]>({
 							return [2, 3, 4].includes(cerveza.id);
 						}) 
 						.map((cerveza) => (
-							<div class="relative group duration-300 hover:scale-[1.02]">
+							<a class="relative group duration-300 hover:scale-[1.02]" href={`cerveza/${cerveza.attributes.Slug}`}>
 								<img 
 									class="duration-300 group-hover:brightness-50 h-[30rem] w-full rounded-lg"
 									src={`${cerveza.attributes.Cerveza.data.attributes.formats.large.url}`}
@@ -101,7 +102,7 @@ const cerveza = await fetchApi<CervezaProps[]>({
 								<div class="group-hover:brightness-100 flex items-center justify-center text-white text-3xl font-bold absolute inset-0 opacity-0 group-hover:opacity-100">
 									{cerveza.attributes.Estilo}
 								</div>
-							</div>
+							</a>
 						))
 					}		
 				</div>
@@ -111,7 +112,7 @@ const cerveza = await fetchApi<CervezaProps[]>({
 							return [5, 6, 7].includes(cerveza.id);
 						}) 
 						.map((cerveza) => (
-							<div class="relative group duration-300 hover:scale-[1.02]">
+							<a class="relative group duration-300 hover:scale-[1.02]" href={`cerveza/${cerveza.attributes.Slug}`}>
 								<img 
 									class="duration-300 group-hover:brightness-50 h-[30rem] w-full rounded-lg"
 									src={`${cerveza.attributes.Cerveza.data.attributes.formats.large.url}`}
@@ -121,7 +122,7 @@ const cerveza = await fetchApi<CervezaProps[]>({
 								<div class="group-hover:brightness-100 flex items-center justify-center text-white text-3xl font-bold absolute inset-0 opacity-0 group-hover:opacity-100">
 									{cerveza.attributes.Estilo}
 								</div>
-							</div>
+							</a>
 						))
 					}	
 				</div>
@@ -131,7 +132,7 @@ const cerveza = await fetchApi<CervezaProps[]>({
 							return [8, 9, 10].includes(cerveza.id);
 						}) 
 						.map((cerveza) => (
-							<div class="relative group duration-300 hover:scale-[1.02]">
+							<a class="relative group duration-300 hover:scale-[1.02]" href={`cerveza/${cerveza.attributes.Slug}`}>
 								<div>
 									<img 
 										class="duration-300 group-hover:brightness-50 h-[30rem] w-full rounded-lg"
@@ -143,7 +144,7 @@ const cerveza = await fetchApi<CervezaProps[]>({
 										{cerveza.attributes.Estilo}
 									</div>
 								</div>
-							</div>
+							</a>
 						))
 					}	
 				</div>
@@ -159,7 +160,7 @@ const cerveza = await fetchApi<CervezaProps[]>({
 			<div class="relative z-10 flex flex-col justify-center items-center h-full text-center">
 				<h2 class="mb-4 text-8xl tracking-tight font-extrabold text-white">Deliciosa comida</h2>
 				<p class="text-2xl text-gray-300 mb-8">Conoce nuestro menu y amplia tu experiencia cervecera.</p>
-				<a href="#" class="bg-yellow-400 text-gray-900 hover:bg-yellow-300 py-2 px-6 rounded-full text-lg font-semibold transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">Ver menu</a>
+				<a href="/menu" class="bg-yellow-400 text-gray-900 hover:bg-yellow-300 py-2 px-6 rounded-full text-lg font-semibold transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">Ver menu</a>
 			</div>	
 		</section>
 

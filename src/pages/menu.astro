@@ -1,0 +1,69 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import menuPageHero from '../assets/menuPageHero.jpg'
+import fetchApi from "../lib/strapi";
+import type CervezaProps from "../interfaces/cerveza";
+
+const cerveza = await fetchApi<CervezaProps[]>({
+	endpoint:'cervezas?populate=*',
+	wrappedByKey: 'data',
+});
+---
+
+<Layout title="Indie Beer">
+  <main>
+    <!-- Hero Section -->
+     <section class="relative h-[30rem] text-white overflow-hidden">
+      <div class="absolute -translate-y-20">
+        <Image src={menuPageHero} alt="Hero" width={1920} class="object-cover object-center w-full h-full"/>
+        <div class="absolute inset-0 bg-black opacity-[0.5]"></div>
+      </div>
+      <div class="relative z-10 flex flex-col justify-center items-center h-full text-center">
+        <h1 class="text-8xl leading-tight">Menu</h1>
+      </div>
+     </section>
+
+     <!-- Products Section -->
+      <section class="mt-16 text-white">
+        <h2 class="text-center mb-16 text-4xl tracking-tight font-extrabold ">¿Que te vas a pedir?</h2>            
+        <div class="text-center text-3xl font-extrabold mb-8">Los favoritos de la raza</div>
+        <div class="flex flex-row items-center justify-center gap-8 mb-40">
+            <div class="relative w-64 h-64">
+                <img src="https://via.placeholder.com/256" alt="Rounded Image" class="rounded-full object-cover w-full h-full mb-4">
+                <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-">Hamburgesa</h3>
+                <p class="mt-1 flex justify-center text-base">lorem50</p>
+                <hr class="mt-4 h-[0.1rem] border-t-0 bg-white"/>
+                <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-2">$140</h3>
+            </div>
+            <div class="relative w-64 h-64">
+                <img src="https://via.placeholder.com/256" alt="Rounded Image" class="rounded-full object-cover w-full h-full mb-4">
+                <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-">Hamburgesa</h3>
+                <p class="mt-1 flex justify-center text-base">lorem50</p>
+                <hr class="mt-4 h-[0.1rem] border-t-0 bg-white"/>
+                <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-2">$140</h3>
+            </div>
+            <div class="relative w-64 h-64">
+                <img src="https://via.placeholder.com/256" alt="Rounded Image" class="rounded-full object-cover w-full h-full mb-4">
+                <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-">Hamburgesa</h3>
+                <p class="mt-1 flex justify-center text-base">lorem50</p>
+                <hr class="mt-4 h-[0.1rem] border-t-0 bg-white"/>
+                <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-2">$140</h3>
+            </div>
+            <div class="relative w-64 h-64">
+                <img src="https://via.placeholder.com/256" alt="Rounded Image" class="rounded-full object-cover w-full h-full mb-4">
+                <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-">Hamburgesa</h3>
+                <p class="mt-1 flex justify-center text-base">lorem50</p>
+                <hr class="mt-4 h-[0.1rem] border-t-0 bg-white"/>
+                <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-2">$140</h3>
+            </div>
+        </div>
+      </section>
+  </main>
+</Layout>
+
+<style>
+  h1 {
+    font-family: 'BrannbollConnect', sans-serif;
+  }
+</style>

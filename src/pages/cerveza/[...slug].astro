@@ -19,12 +19,13 @@ export async function getStaticPaths() {
             Nombre:cerveza.attributes.Nombre, 
             Descripcion:cerveza.attributes.Descripcion,
             Cerveza:cerveza.attributes.Cerveza.data.attributes.formats.large.url,
-            Estilo:cerveza.attributes.Estilo
+            Estilo:cerveza.attributes.Estilo,
+            Precio:cerveza.attributes.Precio
         }
     }))
 }
 
-const { Nombre, Descripcion, Cerveza, Estilo } = Astro.props;
+const { Nombre, Descripcion, Cerveza, Estilo, Precio } = Astro.props;
 
 const cerveza = await fetchApi<CervezaProps[]>({
 	endpoint:'cervezas?populate=*',
@@ -76,17 +77,13 @@ const cerveza = await fetchApi<CervezaProps[]>({
                             <div class="flex mb-4">
                                 <div class="mr-4">
                                     <span class="font-bold text-white">Precio:</span>
-                                    <span class="text-white">$29.99</span>
+                                    <span class="text-white">${Precio}</span>
                                 </div>
                             </div>
                             <div>
                                 <span class="font-bold text-gray-700 dark:text-gray-300">Product Description:</span>
                                 <p class="text-white text-sm mt-2">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                                    sed ante justo. Integer euismod libero id mauris malesuada tincidunt. Vivamus commodo nulla ut
-                                    lorem rhoncus aliquet. Duis dapibus augue vel ipsum pretium, et venenatis sem blandit. Quisque
-                                    ut erat vitae nisi ultrices placerat non eget velit. Integer ornare mi sed ipsum lacinia, non
-                                    sagittis mauris blandit. Morbi fermentum libero vel nisl suscipit, nec tincidunt mi consectetur.
+                                    {Descripcion}
                                 </p>
                             </div>
                         </div>
