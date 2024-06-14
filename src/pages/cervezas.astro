@@ -14,8 +14,8 @@ const cerveza = await fetchApi<CervezaProps[]>({
 <Layout title="Indie Beer">
   <main>
     <!-- Hero Section -->
-     <section class="relative h-[30rem] text-white overflow-hidden">
-      <div class="absolute -translate-y-20">
+     <section class="relative h-[20rem] text-white overflow-hidden">
+      <div class="absolute lg:-translate-y-20">
         <Image src={cervezasPageHero} alt="Hero" width={1920} class="object-cover object-center w-full h-full"/>
         <div class="absolute inset-0 bg-black opacity-[0.5]"></div>
       </div>
@@ -25,11 +25,11 @@ const cerveza = await fetchApi<CervezaProps[]>({
      </section>
 
      <!-- Products Section -->
-      <section class="mt-16">
+      <section class="mt-4 md:mt-16">
         <h2 class="text-center mb-4 text-4xl tracking-tight font-extrabold text-white ">Checa nuestras cheves recien llegadas</h2>
         <div>
           <div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
-            <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
+            <div class="grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
               {cerveza
                 .map((cerveza) =>(
                   <a href={`/cerveza/${cerveza.attributes.Slug}`} class="group">

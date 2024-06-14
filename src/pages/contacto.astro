@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
-import menuPageHero from '../assets/menuPageHero.jpg'
+import contactPageHero from '../assets/contactPageHero.jpg'
 import fetchApi from "../lib/strapi";
 import type MenuProps from "../interfaces/menu";
 
@@ -20,7 +20,7 @@ function compararPorId(a: { id: number; }, b: { id: number; }) {
     <!-- Hero Section -->
      <section class="relative h-[30rem] text-white overflow-hidden">
       <div class="absolute -translate-y-20">
-        <Image src={menuPageHero} alt="Hero" width={1920} class="object-cover object-center w-full h-full"/>
+        <Image src={contactPageHero} alt="Hero" width={1920} class="object-cover object-center w-full h-full"/>
         <div class="absolute inset-0 bg-black opacity-[0.5]"></div>
       </div>
       <div class="relative z-10 flex flex-col justify-center items-center h-full text-center">

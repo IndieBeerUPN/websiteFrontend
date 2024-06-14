@@ -18,8 +18,8 @@ function compararPorId(a: { id: number; }, b: { id: number; }) {
 <Layout title="Indie Beer">
   <main>
     <!-- Hero Section -->
-     <section class="relative h-[30rem] text-white overflow-hidden">
-      <div class="absolute -translate-y-20">
+     <section class="relative h-[20rem] text-white overflow-hidden">
+      <div class="absolute lg:-translate-y-20">
         <Image src={menuPageHero} alt="Hero" width={1920} class="object-cover object-center w-full h-full"/>
         <div class="absolute inset-0 bg-black opacity-[0.5]"></div>
       </div>
@@ -29,22 +29,23 @@ function compararPorId(a: { id: number; }, b: { id: number; }) {
      </section>
 
      <!-- Menu Section -->
-      <section class="mt-16 text-white">
-        <h2 class="text-center mb-12 text-5xl tracking-tight font-extrabold ">¿Que te vas a pedir?</h2>            
-        <div class="flex flex-row items-center justify-center gap-8 mb-[14rem]">
+      <section class="md:mt-8 lg:mt-16 text-white">
+        <h2 class="text-center mb-12 text-4xl md:text-5xl tracking-tight font-extrabold ">¿Que te vas a pedir?</h2>  
+        <!-- Favs Section -->
+        <div class="flex flex-col gap-y-6 md:flex-row justify-center md:gap-4 lg:gap-8 mb-8 md:mb-[14rem] mx-20 md:mx0">
           {menu
             .filter(function(menu) {
               return "Favorito".includes(menu.attributes.Categoria)
             })
             .map((menu) => (
-              <div class="relative w-64 h-64">
+              <div class="md:relative md:w-52 md:h-52 lg:w-64 lg:h-64">
                 <img 
                   src={`${menu.attributes.Foto.data.attributes.formats.large.url}`} 
                   alt="fav img" 
-                  class="rounded-full object-cover w-full h-full mb-4 border-white border-4"
+                  class="rounded-full object-cover lg:w-full md:h-full mb-4 border-white border-4"
                 />
-                <div class="h-[7.5rem]">
-                  <h3 class="flex justify-center text-2xl font-medium text-white text-center mt-">{menu.attributes.Platillo}</h3>
+                <div class="h-auto md:h-[8rem] lg:h-[7.5rem]">
+                  <h3 class="flex justify-center text-xl lg:text-2xl font-medium text-white text-center">{menu.attributes.Platillo}</h3>
                   <p class="mt-1 flex justify-center text-center text-base">{menu.attributes.Descripcion}</p>
                 </div>
                 <hr class="mt-4 h-[0.1rem] border-t-0 bg-white"/>
@@ -54,8 +55,9 @@ function compararPorId(a: { id: number; }, b: { id: number; }) {
           }
         </div>
 
-        <section class="flex items-start mx-40 mt-[11rem]">
-          <div class="grid grid-cols-4">
+        <!-- MenuItems Section -->
+        <section class="flex items-start mx-10 md:mx-40 md:mt-[11rem]">
+          <div class="grid grid-cols-2 lg:grid-cols-4">
             <div class="col-span-2">
               <h2 class="text-center mb-8 text-4xl tracking-tight font-extrabold ">A la plancha</h2>   
               {menu
@@ -67,14 +69,14 @@ function compararPorId(a: { id: number; }, b: { id: number; }) {
                   <div class="flex flex-row mb-4 justify-center">
                     <div class="w-[30rem]">
                       <div class=" flex flex-row justify-between gap-16">
-                        <h3 class="text-2xl font-medium text-white">
+                        <h3 class="text-xl md:text-2xl font-medium text-white">
                           {menu.attributes.Platillo}
                         </h3>
                         <h3 class="text-2xl font-medium text-white">
                           ${menu.attributes.Precio}
                         </h3>
                       </div>
-                      <p class="text-sm w-[25rem]">
+                      <p class="text-sm w-[18rem] md:w-[25rem]">
                         {menu.attributes.Descripcion}
                       </p> 
                     </div>
@@ -92,19 +94,21 @@ function compararPorId(a: { id: number; }, b: { id: number; }) {
                   })
                   .sort(compararPorId)
                   .map((menu) =>(
-                    <div class="flex flex-row">
+                    <div class="flex flex-col md:flex-row">
                       <div class="w-full">
-                        <div class=" flex flex-row justify-between gap-12">
-                          <h3 class="font-medium text-lg text-white w-full">
-                            {menu.attributes.Platillo}
-                          </h3>
-                          <h3 class="font-medium text-white">
-                            ${menu.attributes.Precio}
-                          </h3>
+                        <div class="h-[7.5rem] md:h-auto">
+                          <div class="flex md:flex-row justify-between gap-4 md:gap-12">
+                            <h3 class="font-medium text-xl text-white w-full">
+                              {menu.attributes.Platillo}
+                            </h3>
+                            <h3 class="font-medium text-white">
+                              ${menu.attributes.Precio}
+                            </h3>
+                          </div>
+                          <p class="h-auto md:h-[2.5rem] text-sm">
+                            {menu.attributes.Descripcion}
+                          </p> 
                         </div>
-                        <p class="h-[2.5rem] text-sm">
-                          {menu.attributes.Descripcion}
-                        </p> 
                         <hr class="mt-2 h-[0.1rem] border-t-0 bg-white"/>
                       </div>
                     </div>
