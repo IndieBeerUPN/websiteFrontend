@@ -1,8 +1,13 @@
+---
+import { Image } from "astro:assets";
+import footerLogo from '../assets/footerLogo.svg'
+---
+
 <footer class="">
     <div class="container px-6 py-4 mx-auto mt-8">
         <div class="flex flex-col items-center text-center">
             <a href="/" class="text-white">
-                <img src="/src/assets/path1.svg" class="w-28 h-28">
+                <Image src={footerLogo} alt="footerLogo" class="w-28 h-28">
             </a>
 
             <div class="flex flex-wrap justify-center mt-6 -mx-4">
