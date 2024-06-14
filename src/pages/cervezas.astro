@@ -33,9 +33,9 @@ const cerveza = await fetchApi<CervezaProps[]>({
               {cerveza
                 .map((cerveza) =>(
                   <a href={`/cerveza/${cerveza.attributes.Slug}`} class="group">
-                    <div class="cursor-pointer aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                    <div class="cursor-pointer aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 hover:scale-[1.02] duration-300">
                       <img 
-                        class="h-[30rem] w-full object-cover object-center group-hover:opacity-75"
+                        class="h-[30rem] w-full object-cover object-center"
                         src={`${cerveza.attributes.Cerveza.data.attributes.formats.large.url}`}
                         alt="cheve"
                         loading="lazy"
