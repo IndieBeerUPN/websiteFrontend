@@ -36,8 +36,8 @@ const cerveza = await fetchApi<CervezaProps[]>({
 <Layout title="Indie Beer">
     <main>
         <!-- Hero Section -->
-        <section class="relative h-[30rem] text-white overflow-hidden">
-            <div class="absolute -translate-y-20">
+        <section class="relative h-[20rem] text-white overflow-hidden">
+            <div class="absolute lg:-translate-y-20">
                 <Image src={cervezasPageHero} alt="Hero" width={1920} class="object-cover object-center w-full h-full"/>
                 <div class="absolute inset-0 bg-black opacity-[0.5]"></div>
             </div>
@@ -59,9 +59,9 @@ const cerveza = await fetchApi<CervezaProps[]>({
                                 alt="Product Image">
                             </div>
                             <div class="flex -mx-2 mb-4">
-                                <div class="w-full px-2">
+                                <a class="w-full px-2" href="https://api.whatsapp.com/send?phone=%2B524521493606&context=ARDhGTB9YuhRAeZSQVE7cdSqTN5m2cMfzk8hV_RGQU7U5TKx53NTz35Mk3-Q1_UhCwIW1O2PGfxOcduu4oVy3uHQKihqId_6Ov_C1L4Lu02ucPaYiocjU4KOTmvS8R6s4TnU8VJF7eVmcN3VlaDlrvdrmA&source=FB_Page&app=facebook&entry_point=page_cta&fbclid=IwZXh0bgNhZW0CMTAAAR3AvdQTKLWrk-YMznA8oZwWT7YXNZxhqdLmSe_v4mlYh3XfkooUF5lXBXU_aem_ZmFrZWR1bW15MTZieXRlcw">
                                     <button class="w-full bg-yellow-500 text-black py-2 px-4 rounded-full font-bold hover:bg-yellow-400 duration-300">¡Apartame una!</button>
-                                </div>
+                                </a>
                             </div>
                         </div>
                         <div class="text-xl md:flex-1 px-4">
