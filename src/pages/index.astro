@@ -7,11 +7,17 @@ import refriImg from '../assets/refri.jpg'
 import fetchApi from '../lib/strapi';
 import foodImg from '../assets/burgerAndBeer.jpeg'
 import type	CervezaProps from '../interfaces/cerveza';
+import type	heroPageProps from '../interfaces/heroPage';
 
 const cerveza = await fetchApi<CervezaProps[]>({
 	endpoint:'cervezas?populate=*',
 	wrappedByKey: 'data',
 });
+
+const infoDeInicio = await fetchApi<heroPageProps[]>({
+	endpoint:'pagina-inicio?populate=*',
+	wrappedByKey:'data',
+})
 ---
 
 <Layout title="Indie Beer">
@@ -19,7 +25,13 @@ const cerveza = await fetchApi<CervezaProps[]>({
 		<!-- HERO SECTION -->
 		<section class="relative h-dvh text-white overflow-hidden">
 			<div class="absolute inset-0">
-				<Image src={heroImg} alt="Hero" width={1920} class="object-cover object-center w-full h-full"/>
+				<Image 
+					src={`${infoDeInicio.attributes.Portada.data.attributes.url}`} 
+					alt="Hero" 
+					width={1920} 
+					height={1080}
+					class="object-cover object-center w-full h-full"
+				/>
 				<div class="absolute inset-0 bg-gradient-to-b from-black from-15%"></div>
 				<div class="absolute inset-0 bg-black opacity-[0.5]"></div>
 			</div>
@@ -41,7 +53,7 @@ const cerveza = await fetchApi<CervezaProps[]>({
 							</div>
 						</div>
 						<div>
-							<h3 class="text-3xl font-extrabold sm:text-4xl md:text-2xl lg:text-4xl xl:text-5xl">60 Litros</h3>
+							<h3 class="text-3xl font-extrabold sm:text-4xl md:text-2xl lg:text-4xl xl:text-5xl">{infoDeInicio.attributes.litrosEnTap} Litros</h3>
 							<p class="mt-1 lg:text-lg md:text-base">De Cerveza On Tap</p>
 						</div>
 					</div>
@@ -63,7 +75,7 @@ const cerveza = await fetchApi<CervezaProps[]>({
 							</div>
 						</div>
 						<div>
-							<h3 class="text-3xl font-extrabold sm:text-4xl md:text-2xl lg:text-4xl xl:text-5xl">Más de 30</h3>
+							<h3 class="text-3xl font-extrabold sm:text-4xl md:text-2xl lg:text-4xl xl:text-5xl">{infoDeInicio.attributes.latasDeCerveza}</h3>
 							<p class="mt-1 lg:text-lg md:text-base">Cervezas siempre frias</p>
 						</div>
 					</div>
@@ -75,13 +87,25 @@ const cerveza = await fetchApi<CervezaProps[]>({
 		<section class="">
 			<div class="gap-1 items-center py-4 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:px-6">
 				<div class="font-light text-white sm:text-lg mr-12">
-					<h2 class="mb-4 text-3xl lg:text-5xl md:text-4xl tracking-tight font-extrabold text-white">Experiencias unicas con cheves unicas</h2>
-					<p class="mb-2">¡Bienvenidos a Indie Beer Upn! En un mundo lleno de sabores genéricos, hemos creado un santuario para los amantes de la cerveza que buscan algo único, auténtico y lleno de carácter. En cada vaso, encontrarás la pasión de los maestros cerveceros nacionales e internacionales que han dedicado horas de esfuerzo y creatividad para traerte una experiencia que despierta tus sentidos.</p>
-					<p>Sumérgete en nuestro ambiente acogedor, donde la buena conversación fluye tan libremente como nuestras cervezas. Nuestro equipo está aquí para guiarte a través de un viaje de descubrimiento, desde los clásicos hasta las últimas creaciones innovadoras.</p>
+					<h2 class="mb-4 text-3xl lg:text-5xl md:text-4xl tracking-tight font-extrabold text-white">{infoDeInicio.attributes.tituloDeLaSeccionAbout}</h2>
+					<p class="mb-2">{infoDeInicio.attributes.desripcion1DeLaSeccionAbout}</p>
+					<p>{infoDeInicio.attributes.desripcion2DeLaSeccionAbout}</p>
 				</div>
 				<div class="grid grid-cols-2 gap-4 mt-8">
-					<Image src={mesasImg} alt="refrigerador" width={592} class="w-full rounded-lg"/>
-					<Image src={refriImg} alt="refrigerador" width={592} class="mt-4 w-full lg:mt-10 rounded-lg"/>
+					<Image
+						src={`${infoDeInicio.attributes.foto1DeLaSeccionAbout.data.attributes.formats.medium.url}`} 
+						alt="refrigerador" 
+						width={592} 
+						height={592}
+						class="w-full rounded-lg"
+					/>
+					<Image 
+						src={`${infoDeInicio.attributes.foto2DeLaSeccionAbout.data.attributes.formats.medium.url}`} 
+						alt="refrigerador" 
+						width={592} 
+						height={592}
+						class="mt-4 w-full lg:mt-10 rounded-lg"
+					/>
 				</div>
 			</div>
 		</section>
@@ -99,11 +123,12 @@ const cerveza = await fetchApi<CervezaProps[]>({
 						}) 
 						.map((cerveza) => (
 							<a class="relative group duration-300 hover:scale-[1.02]" href={`cerveza/${cerveza.attributes.Slug}`}>
-								<img 
-									class="duration-300 group-hover:brightness-50 lg:h-[30rem] md:h-[15rem] w-full rounded-lg"
+								<Image 
 									src={`${cerveza.attributes.Cerveza.data.attributes.formats.large.url}`}
 									alt="cheve"
-									loading="lazy"
+									class="duration-300 group-hover:brightness-50 lg:h-[30rem] md:h-[15rem] w-full rounded-lg"
+									width={50}
+									height={50}
 								/>
 								<div class="group-hover:brightness-100 flex items-center justify-center text-white text-3xl font-bold absolute inset-0 opacity-0 group-hover:opacity-100">
 									{cerveza.attributes.Estilo}
@@ -119,11 +144,12 @@ const cerveza = await fetchApi<CervezaProps[]>({
 						}) 
 						.map((cerveza) => (
 							<a class="relative group duration-300 hover:scale-[1.02]" href={`cerveza/${cerveza.attributes.Slug}`}>
-								<img 
+								<Image 
 									class="duration-300 group-hover:brightness-50 lg:h-[30rem] md:h-[15rem] w-full rounded-lg"
 									src={`${cerveza.attributes.Cerveza.data.attributes.formats.large.url}`}
 									alt="cheve"
-									loading="lazy"
+									width={50}
+									height={50}
 								/>
 								<div class="group-hover:brightness-100 flex items-center justify-center text-white text-3xl font-bold absolute inset-0 opacity-0 group-hover:opacity-100">
 									{cerveza.attributes.Estilo}
@@ -140,11 +166,12 @@ const cerveza = await fetchApi<CervezaProps[]>({
 						.map((cerveza) => (
 							<a class="relative group duration-300 hover:scale-[1.02]" href={`cerveza/${cerveza.attributes.Slug}`}>
 								<div>
-									<img 
+									<Image 
 										class="duration-300 group-hover:brightness-50 lg:h-[30rem] md:h-[15rem] w-full rounded-lg"
 										src={`${cerveza.attributes.Cerveza.data.attributes.formats.large.url}`}
 										alt="cheve"
-										loading="lazy"
+										width={50}
+										height={50}
 									/>
 									<div class="group-hover:brightness-100 flex items-center justify-center text-white text-3xl font-bold absolute inset-0 opacity-0 group-hover:opacity-100">
 										{cerveza.attributes.Estilo}
