@@ -14,52 +14,179 @@ const cerveza = await fetchApi<CervezaProps[]>({
 <Layout title="Indie Beer">
   <main>
     <!-- Hero Section -->
-     <section class="relative h-[20rem] text-white overflow-hidden">
-      <div class="absolute lg:-translate-y-20">
-        <Image src={cervezasPageHero} alt="Hero" width={1920} class="object-cover object-center w-full h-full"/>
-        <div class="absolute inset-0 bg-black opacity-[0.5]"></div>
-      </div>
-      <div class="relative z-10 flex flex-col justify-center items-center h-full text-center">
-        <h1 class="text-8xl leading-tight">Cervezas</h1>
-      </div>
-     </section>
+    <section class="relative h-[20rem] text-white overflow-hidden">
+    <div class="absolute lg:-translate-y-20">
+      <Image src={cervezasPageHero} alt="Hero" width={1920} class="object-cover object-center w-full h-full"/>
+      <div class="absolute inset-0 bg-black opacity-[0.5]"></div>
+    </div>
+    <div class="relative z-10 flex flex-col justify-center items-center h-full text-center">
+      <h1 class="text-8xl leading-tight">Cervezas</h1>
+    </div>
+    </section>
 
-     <!-- Products Section -->
-      <section class="mt-4 md:mt-16">
-        <h2 class="text-center mb-4 text-4xl tracking-tight font-extrabold text-white ">Checa nuestras cheves recien llegadas</h2>
-        <div>
-          <div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
-            <div class="grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
-              {cerveza
-                .map((cerveza) =>(
-                  <a href={`/cerveza/${cerveza.attributes.Slug}`} class="group">
-                    <div class="cursor-pointer aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 hover:scale-[1.02] duration-300">
-                      <img 
-                        class="h-[30rem] w-full object-cover object-center"
-                        src={`${cerveza.attributes.Cerveza.data.attributes.formats.large.url}`}
-                        alt="cheve"
-                        loading="lazy"
-                      />
-                    </div>
-                    <p class="mt-3 text-sm text-white">
-                      {cerveza.attributes.Estilo}
-                    </p>
-                    <div class="flex flex-row gap-8 justify-between">
-                      <h3 class="mt-1 text-xl font-medium text-white">
-                        {cerveza.attributes.Nombre}
-                      </h3>
-                      <h3 class="mt-1 text-xl font-medium text-white">
-                        ${cerveza.attributes.Precio}
-                      </h3>
-                    </div>
-                  </a>
-                ))
-              }
-            </div>
-          </div>
+    <!-- Products Section -->
+    <section class="mt-4 md:mt-16">
+      <h2 class="text-center mb-4 text-4xl tracking-tight font-extrabold text-white ">Descubre tu nueva cerveza favorita</h2>
+      <div class="tabs mt-8 mx-4 text-white md:mx-16 lg:mx-40 lg:gap-12">
+        <div role="tablist" class="flex flex-row gap-4 justify-center">
+          <button 
+            class="w-full text-md font-semibold rounded-full border border-white text-white py-2 px-4"
+            role="tab"
+            aria-selected="false"
+            aria-controls="onTap"
+          >
+            On Tap
+          </button>
+          <button 
+            class="w-full text-md font-semibold rounded-full bg-yellow-500 text-gray-900 py-2 px-4"
+            role="tab"
+            aria-selected="true"
+            aria-controls="new"
+          >
+            Recien llegadas
+          </button>
+          <button 
+            class="w-full text-md font-semibold rounded-full border border-white text-white py-2 px-4"
+            role="tab"
+            aria-selected="false"
+            aria-controls="classy"
+          >
+            Las de siempre
+          </button>
         </div>
-      </section>
+      </div>
+      <div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8" role="tabpanel" id="onTap" hidden>
+        <div class="grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
+          {cerveza
+            .filter(function(cerveza){
+              return ("OnTap").includes(cerveza.attributes.Categoria)
+            })
+            .map((cerveza) =>(
+              <a href={`/cerveza/${cerveza.attributes.Slug}`} class="group">
+                <div class="cursor-pointer aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 hover:scale-[1.02] duration-300">
+                  <img 
+                    class="h-[30rem] w-full object-cover object-center"
+                    src={`${cerveza.attributes.Cerveza.data.attributes.formats.large.url}`}
+                    alt="cheve"
+                    loading="lazy"
+                  />
+                </div>
+                <p class="mt-3 text-sm text-white">
+                  {cerveza.attributes.Estilo}
+                </p>
+                <div class="flex flex-row gap-8 justify-between">
+                  <h4 class="mt-1 text-xl font-medium text-white">
+                    {cerveza.attributes.Nombre}
+                  </h4>
+                  <h4 class="mt-1 text-xl font-medium text-white">
+                    ${cerveza.attributes.Precio}
+                  </h4>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8" role="tabpanel" id="new">
+        <div class="grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
+          {cerveza
+            .filter(function(cerveza) {
+              return ("Nueva").includes(cerveza.attributes.Categoria)
+            })
+            .map((cerveza) =>(
+              <a href={`/cerveza/${cerveza.attributes.Slug}`} class="group">
+                <div class="cursor-pointer aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 hover:scale-[1.02] duration-300">
+                  <img 
+                    class="h-[30rem] w-full object-cover object-center"
+                    src={`${cerveza.attributes.Cerveza.data.attributes.formats.large.url}`}
+                    alt="cheve"
+                    loading="lazy"
+                  />
+                </div>
+                <p class="mt-3 text-sm text-white">
+                  {cerveza.attributes.Estilo}
+                </p>
+                <div class="flex flex-row gap-8 justify-between">
+                  <h4 class="mt-1 text-xl font-medium text-white">
+                    {cerveza.attributes.Nombre}
+                  </h4>
+                  <h4 class="mt-1 text-xl font-medium text-white">
+                    ${cerveza.attributes.Precio}
+                  </h4>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8" role="tabpanel" id="classy" hidden>
+        <div class="grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
+          {cerveza
+            .map((cerveza) =>(
+              <a href={`/cerveza/${cerveza.attributes.Slug}`} class="group">
+                <div class="cursor-pointer aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 hover:scale-[1.02] duration-300">
+                  <img 
+                    class="h-[30rem] w-full object-cover object-center"
+                    src={`${cerveza.attributes.Cerveza.data.attributes.formats.large.url}`}
+                    alt="cheve"
+                    loading="lazy"
+                  />
+                </div>
+                <p class="mt-3 text-sm text-white">
+                  {cerveza.attributes.Estilo}
+                </p>
+                <div class="flex flex-row gap-8 justify-between">
+                  <h4 class="mt-1 text-xl font-medium text-white">
+                    {cerveza.attributes.Nombre}
+                  </h4>
+                  <h4 class="mt-1 text-xl font-medium text-white">
+                    ${cerveza.attributes.Precio}
+                  </h4>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
   </main>
+
+  <script>
+    const tabs = document.querySelector('.tabs');
+    const tabButtons = document.querySelectorAll('[role="tab"]');
+    const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+
+    function handleTabClick(event: MouseEvent) {
+      // hide all tab panels
+      tabPanels.forEach((panel) => {
+        (panel as HTMLElement).hidden = true;
+      });
+      // mark all tabs as unselected
+      tabButtons.forEach(tab => {
+        tab.setAttribute('aria-selected', 'false');
+      })
+      // mark the clicked tab as selected
+      const clickedTab = event.currentTarget as HTMLButtonElement;
+      clickedTab.setAttribute('aria-selected', 'true');
+
+      // find the associated tabPanel and show it
+      const tabId = clickedTab.getAttribute('aria-controls');
+      tabPanels.forEach((panel) => {
+        let panelId = panel.getAttribute("id")
+        if (tabId === panelId){
+          (panel as HTMLElement).hidden = false;
+        }
+      })
+
+      console.log(event.currentTarget);
+    }
+    
+    tabButtons.forEach(button => button.addEventListener('click', handleTabClick));
+
+
+  </script>
 </Layout>
 
 <style>

@@ -9,6 +9,7 @@ export default interface CervezaProps {
         Precio: number;
         Descripcion: string;
         Slug: string;
+        Categoria: string;
         Cerveza: {
             [x: string]: any;
                 id: number;
