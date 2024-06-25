@@ -30,7 +30,7 @@ const cerveza = await fetchApi<CervezaProps[]>({
       <div class="tabs mt-8 mx-4 text-white md:mx-16 lg:mx-40 lg:gap-12">
         <div role="tablist" class="flex flex-row gap-4 justify-center">
           <button 
-            class="w-full text-md font-semibold rounded-full border border-white text-white py-2 px-4"
+            class="w-full text-md font-semibold rounded-full aria-selected:bg-yellow-500 aria-selected:text-gray-900 border border-white text-white py-2 px-4 transition-colors duration-500"
             role="tab"
             aria-selected="false"
             aria-controls="onTap"
@@ -38,7 +38,7 @@ const cerveza = await fetchApi<CervezaProps[]>({
             On Tap
           </button>
           <button 
-            class="w-full text-md font-semibold rounded-full bg-yellow-500 text-gray-900 py-2 px-4"
+            class="w-full text-md font-semibold rounded-full aria-selected:bg-yellow-500 aria-selected:text-gray-900 border border-white text-white py-2 px-4 transition-colors duration-500"
             role="tab"
             aria-selected="true"
             aria-controls="new"
@@ -46,7 +46,7 @@ const cerveza = await fetchApi<CervezaProps[]>({
             Recien llegadas
           </button>
           <button 
-            class="w-full text-md font-semibold rounded-full border border-white text-white py-2 px-4"
+            class="w-full text-md font-semibold rounded-full aria-selected:bg-yellow-500 aria-selected:text-gray-900 border border-white text-white py-2 px-4 transition-colors duration-500"
             role="tab"
             aria-selected="false"
             aria-controls="classy"
@@ -124,6 +124,9 @@ const cerveza = await fetchApi<CervezaProps[]>({
       <div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8" role="tabpanel" id="classy" hidden>
         <div class="grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
           {cerveza
+            .filter(function(cerveza) {
+              return("Frecuente").includes(cerveza.attributes.Categoria)
+            })
             .map((cerveza) =>(
               <a href={`/cerveza/${cerveza.attributes.Slug}`} class="group">
                 <div class="cursor-pointer aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 hover:scale-[1.02] duration-300">
@@ -150,42 +153,45 @@ const cerveza = await fetchApi<CervezaProps[]>({
           }
         </div>
       </div>
+
     </section>
   </main>
 
   <script>
-    const tabs = document.querySelector('.tabs');
-    const tabButtons = document.querySelectorAll('[role="tab"]');
-    const tabPanels = document.querySelectorAll('[role="tabpanel"]');
-
-    function handleTabClick(event: MouseEvent) {
-      // hide all tab panels
-      tabPanels.forEach((panel) => {
-        (panel as HTMLElement).hidden = true;
-      });
-      // mark all tabs as unselected
-      tabButtons.forEach(tab => {
-        tab.setAttribute('aria-selected', 'false');
-      })
-      // mark the clicked tab as selected
-      const clickedTab = event.currentTarget as HTMLButtonElement;
-      clickedTab.setAttribute('aria-selected', 'true');
-
-      // find the associated tabPanel and show it
-      const tabId = clickedTab.getAttribute('aria-controls');
-      tabPanels.forEach((panel) => {
-        let panelId = panel.getAttribute("id")
-        if (tabId === panelId){
-          (panel as HTMLElement).hidden = false;
-        }
-      })
-
-      console.log(event.currentTarget);
+    function init() {
+      const tabs = document.querySelector('.tabs');
+      const tabButtons = document.querySelectorAll('[role="tab"]');
+      const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+  
+      function handleTabClick(event: MouseEvent) {
+        const clickedTab = event.currentTarget as HTMLButtonElement;
+        // hide all tab panels
+        tabPanels.forEach((panel) => {
+          (panel as HTMLElement).hidden = true;
+        });
+        // mark all tabs as unselected
+        tabButtons.forEach(tab => {
+          tab.setAttribute('aria-selected', 'false');
+        })
+        // mark the clicked tab as selected
+        clickedTab.setAttribute('aria-selected', 'true');
+  
+        // find the associated tabPanel and show it
+        const tabId = clickedTab.getAttribute('aria-controls');
+        tabPanels.forEach((panel) => {
+          let panelId = panel.getAttribute("id")
+          if (tabId === panelId){
+            (panel as HTMLElement).hidden = false;
+          }
+        })
+      }
+      
+      tabButtons.forEach(button => button.addEventListener('click', handleTabClick));
     }
+
+    init();
     
-    tabButtons.forEach(button => button.addEventListener('click', handleTabClick));
-
-
+    document.addEventListener("astro:after-swap", init)
   </script>
 </Layout>
 
