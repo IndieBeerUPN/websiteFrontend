@@ -14,7 +14,11 @@ export default interface heroPageProps {
             [x: string]: any;
                 id: number;
                 attributes: {
-                    url: string;
+                    formats: {
+                        large: {
+                            url: string;
+                        }
+                    }
                 }
         }
         foto1DeLaSeccionAbout: {
