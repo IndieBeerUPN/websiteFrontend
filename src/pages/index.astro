@@ -18,6 +18,31 @@ const infoDeInicio = await fetchApi<heroPageProps[]>({
 	endpoint:'pagina-inicio?populate=*',
 	wrappedByKey:'data',
 })
+
+export async function getStaticPaths() {
+    const infoDeInicio = await fetchApi<heroPageProps[]>({
+        endpoint:'pagina-inicio?populate=*',
+	    wrappedByKey: 'data',
+    });
+
+    return infoDeInicio.map(info => ({
+        params : {
+            slug:info.attributes.Slug
+        },
+        props : {
+            litrosEnTap:info.attributes.litrosEnTap, 
+            latasDeCerveza:info.attributes.latasDeCerveza,
+            tituloDeLaSeccionAbout:info.attributes.tituloDeLaSeccionAbout,
+            desripcion1DeLaSeccionAbout:info.attributes.desripcion1DeLaSeccionAbout,
+            descripcion2DeLaSeccionAbout:info.attributes.descripcion2DeLaSeccionAbout,
+			Portada:info.attributes.Portada.attributes.url,
+			foto1DeLaSeccionAbout:info.attributes.foto1DeLaSeccionAbout.attributes.formats.medium.url,
+			foto2DeLaSeccionAbout:info.attributes.foto2DeLaSeccionAbout.attributes.formats.medium.url,
+        }
+    }))
+}
+
+const { litrosEnTap, latasDeCerveza, tituloDeLaSeccionAbout, desripcion1DeLaSeccionAbout, descripcion2DeLaSeccionAbout, Portada,foto1DeLaSeccionAbout, foto2DeLaSeccionAbout } = Astro.props;
 ---
 
 <Layout title="Indie Beer">
@@ -25,8 +50,12 @@ const infoDeInicio = await fetchApi<heroPageProps[]>({
 		<!-- HERO SECTION -->
 		<section class="relative h-dvh text-white overflow-hidden">
 			<div class="absolute inset-0">
+				{infoDeInicio
+
+					
+				}
 				<Image 
-					src={`${infoDeInicio.attributes.Portada.data.attributes.url}`} 
+					src={`${Portada}`} 
 					alt="Hero" 
 					width={1920} 
 					height={1080}
@@ -53,7 +82,7 @@ const infoDeInicio = await fetchApi<heroPageProps[]>({
 							</div>
 						</div>
 						<div>
-							<h3 class="text-3xl font-extrabold sm:text-4xl md:text-2xl lg:text-4xl xl:text-5xl">{infoDeInicio.attributes.litrosEnTap} Litros</h3>
+							<h3 class="text-3xl font-extrabold sm:text-4xl md:text-2xl lg:text-4xl xl:text-5xl">{litrosEnTap} Litros</h3>
 							<p class="mt-1 lg:text-lg md:text-base">De Cerveza On Tap</p>
 						</div>
 					</div>
@@ -75,7 +104,7 @@ const infoDeInicio = await fetchApi<heroPageProps[]>({
 							</div>
 						</div>
 						<div>
-							<h3 class="text-3xl font-extrabold sm:text-4xl md:text-2xl lg:text-4xl xl:text-5xl">{infoDeInicio.attributes.latasDeCerveza}</h3>
+							<h3 class="text-3xl font-extrabold sm:text-4xl md:text-2xl lg:text-4xl xl:text-5xl">{latasDeCerveza}</h3>
 							<p class="mt-1 lg:text-lg md:text-base">Cervezas siempre frias</p>
 						</div>
 					</div>
@@ -87,20 +116,20 @@ const infoDeInicio = await fetchApi<heroPageProps[]>({
 		<section class="">
 			<div class="gap-1 items-center py-4 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:px-6">
 				<div class="font-light text-white sm:text-lg mr-12">
-					<h2 class="mb-4 text-3xl lg:text-5xl md:text-4xl tracking-tight font-extrabold text-white">{infoDeInicio.attributes.tituloDeLaSeccionAbout}</h2>
-					<p class="mb-2">{infoDeInicio.attributes.desripcion1DeLaSeccionAbout}</p>
-					<p>{infoDeInicio.attributes.descripcion2DeLaSeccionAbout}</p>
+					<h2 class="mb-4 text-3xl lg:text-5xl md:text-4xl tracking-tight font-extrabold text-white">{tituloDeLaSeccionAbout}</h2>
+					<p class="mb-2">{desripcion1DeLaSeccionAbout}</p>
+					<p>{descripcion2DeLaSeccionAbout}</p>
 				</div>
 				<div class="grid grid-cols-2 gap-4 mt-8">
 					<Image
-						src={`${infoDeInicio.attributes.foto1DeLaSeccionAbout.data.attributes.formats.medium.url}`} 
+						src={`${foto1DeLaSeccionAbout}`} 
 						alt="refrigerador" 
 						width={592} 
 						height={592}
 						class="w-full rounded-lg"
 					/>
 					<Image 
-						src={`${infoDeInicio.attributes.foto2DeLaSeccionAbout.data.attributes.formats.medium.url}`} 
+						src={`${foto2DeLaSeccionAbout}`} 
 						alt="refrigerador" 
 						width={592} 
 						height={592}

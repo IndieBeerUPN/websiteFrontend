@@ -27,10 +27,6 @@ export async function getStaticPaths() {
 
 const { Nombre, Descripcion, Cerveza, Estilo, Precio } = Astro.props;
 
-const cerveza = await fetchApi<CervezaProps[]>({
-	endpoint:'cervezas?populate=*',
-	wrappedByKey: 'data',
-});
 ---
 
 <Layout title="Indie Beer">
