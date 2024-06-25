@@ -186,7 +186,9 @@ const cerveza = await fetchApi<CervezaProps[]>({
         })
       }
       
-      tabButtons.forEach(button => button.addEventListener('click', handleTabClick));
+      tabButtons.forEach(button => {
+        (button as HTMLElement).addEventListener('click', handleTabClick);
+}     );
     }
 
     init();
