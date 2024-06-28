@@ -1,10 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import fetchApi from '../lib/strapi';
 import foodImg from '../assets/burgerAndBeer.jpeg'
 import type	CervezaProps from '../interfaces/cerveza';
 import type	heroPageProps from '../interfaces/heroPage';
+import instagramProfilePic from '../assets/instagramProfilePic.jpg'
+import instagramPost from '../assets/instagramPost.jpg'
+import facebookProfilePic from '../assets/facebookProfilePic.jpg'
+import facebookPost from '../assets/facebookPost.jpg'
+import whatsAppBg from '../assets/whatsAppBg.jpg'
+
+
+const optimizedWhatsAppBg = await getImage({src:whatsAppBg, format: 'webp'})
 
 const cerveza = await fetchApi<CervezaProps[]>({
 	endpoint:'cervezas?populate=*',
@@ -218,14 +226,215 @@ const info = await fetchApi<heroPageProps>({
 			</div>
 		</section>
 
-		<!-- INSTAGRAM SECTION -->
-		<section class="relative">
-			<div class="grid grid-col-5">
-				<div class="flex flex-row">
+		<!-- SOCIAL MEDIA SECTION -->
+		<div class="mt-8 md:mt-12 md:mx-4">
+			<h2 class="text-center mb-8 lg:mb-0 text-3xl lg:text-5xl md:text-4xl tracking-tight font-extrabold text-white">¡Siguenos en nuestras redes!</h2>
+		</div>
+		<section id="Projects" class="w-fit h-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center items-center gap-y-10 md:gap-y-1 gap-x-8 md:gap-x-1 xl:gap-x-8 mt-10 md:mt-6 lg:mt-1 xl:mt-10 mb-20 lg:mb-2">
 
-				</div>
+			<!-- Instagram Post -->
+			<div class="w-[25rem] h-[38rem] md:scale-90 lg:scale-[0.80] xl:scale-100 group duration-500 hover:scale-105">
+				<a href="https://www.instagram.com/indiebeer.uruapan/">
+					<div class="w-[25rem] h-[38rem] group-hover:brightness-50 bg-white rounded-xl duration-500">
+						<div class="flex justify-between items-center px-4 pt-2">
+							<div class="flex justify-start items-center">
+								<Image src={instagramProfilePic} alt="Instagram Profile Pic" width={100} height={100} class="h-10 w-10 rounded-full mr-2"/>
+								<div class="flex-nowrap">
+									<h4 class="font-bold">indiebeer.uruapan</h4>
+									<p class="text-xs">Uruapan, Michoacán</p>
+								</div>
+							</div>
+							<div class="flex items-center h-7 w-7">
+								<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#000000" class="bi bi-three-dots-vertical"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path> </g></svg>
+							</div>
+						</div>
+						<div class="px-4 py-2">
+							<Image src={instagramPost} alt="Product" class="h-80 w-[25rem] object-cover" />
+						</div>
+						<div class="px-4 w-[25rem]">
+							<div class="flex justify-between items-center">
+								<div class="flex justify-start items-center gap-x-2">
+									<svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z" fill="#ff0000"></path> </g></svg>
+									<svg fill="#000000" width="64px" height="64px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" class="w-8 h-8"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>comment-right</title> <path d="M30.535 28.373c-1.809-1.73-3.119-3.968-3.7-6.485l-0.017-0.088c1.782-1.921 2.888-4.489 2.932-7.315l0-0.009c0-6.686-6.393-12.124-14.25-12.124s-14.25 5.438-14.25 12.124 6.393 12.125 14.25 12.125c0.004 0 0.009 0 0.014 0 1.883 0 3.691-0.319 5.374-0.906l-0.114 0.035c2.528 1.962 5.604 3.343 8.96 3.887l0.115 0.015c0.046 0.010 0.098 0.015 0.152 0.016h0c0.414-0 0.75-0.336 0.75-0.75 0-0.205-0.082-0.39-0.215-0.526l0 0zM21.426 24.348c-0.010-0.009-0.025-0.004-0.035-0.013-0.128-0.11-0.296-0.177-0.479-0.177h-0c-0.022 0-0.039 0.007-0.061 0.009-0.070 0.001-0.137 0.011-0.2 0.030l0.005-0.001c-1.516 0.574-3.269 0.906-5.099 0.906-0.020 0-0.040-0-0.060-0h0.003c-7.030 0-12.75-4.766-12.75-10.625s5.72-10.624 12.75-10.624c7.031 0 12.75 4.766 12.75 10.624-0.024 2.593-1.087 4.934-2.791 6.63l-0 0-0.010 0.026c-0.111 0.124-0.18 0.288-0.183 0.468v0.001c-0.001 0.015-0.002 0.033-0.002 0.050 0 0.007 0 0.014 0 0.022l-0-0.001c-0.002 0.017-0.002 0.037-0.002 0.058 0 0.008 0 0.016 0 0.024l-0-0.001c0.415 2.246 1.34 4.227 2.652 5.887l-0.021-0.028c-2.496-0.614-4.669-1.747-6.49-3.285l0.024 0.019z"></path> </g></svg>
+									<svg
+									width="16.93334mm"
+									height="16.933334mm"
+									viewBox="0 0 16.93334 16.933334"
+									version="1.1"
+									id="svg1"
+									xml:space="preserve"
+									xmlns="http://www.w3.org/2000/svg"
+									class="w-7 h-7"><sodipodi:namedview
+									  id="namedview1"
+									  pagecolor="#ffffff"
+									  bordercolor="#000000"
+									  borderopacity="0.25"
+									  inkscape:showpageshadow="2"
+									  inkscape:pageopacity="0.0"
+									  inkscape:pagecheckerboard="0"
+									  inkscape:deskcolor="#d1d1d1"
+									  inkscape:document-units="mm" /><defs
+									  id="defs1" /><g
+									  id="layer1"
+									  transform="translate(-96.005717,-165.37963)"><path
+										style="fill:#000000;stroke-width:0.142816"
+										d="m 106.77722,182.2921 c -0.18231,-0.0464 -0.38803,-0.18838 -0.49888,-0.34428 -0.0552,-0.0776 -0.8229,-1.59039 -1.70609,-3.36181 l -1.60579,-3.22076 -3.287154,-1.64445 c -3.615076,-1.8085 -3.513231,-1.74811 -3.630911,-2.15299 -0.05154,-0.17731 -0.0547,-0.24664 -0.01863,-0.40786 0.05668,-0.25329 0.192425,-0.44829 0.391194,-0.56193 0.08806,-0.0503 3.623221,-1.24507 7.855911,-2.65496 l 7.69579,-2.56342 0.21688,0.0455 c 0.38989,0.0818 0.62227,0.31433 0.70412,0.7046 l 0.0454,0.21646 -2.57971,7.74162 c -1.9148,5.74625 -2.60751,7.78 -2.68756,7.89053 -0.17845,0.24639 -0.59091,0.39105 -0.89456,0.31375 z m 0.39069,-0.65552 c 0.0493,-0.0542 0.97862,-2.79177 2.56253,-7.54856 1.36685,-4.10494 2.49338,-7.48904 2.5034,-7.52021 0.01,-0.0312 -1.93788,1.89752 -4.32866,4.286 l -4.34688,4.34269 1.61975,3.2399 c 0.89086,1.78194 1.64182,3.24874 1.66881,3.25956 0.114,0.0457 0.248,0.0209 0.32105,-0.0594 z m 4.60759,-15.54822 c -0.006,-0.006 -3.38421,1.1139 -7.5079,2.48791 -4.776782,1.59161 -7.528462,2.52625 -7.582624,2.57553 -0.09368,0.0852 -0.111314,0.24262 -0.03778,0.33727 0.02598,0.0334 1.492443,0.78362 3.258814,1.66708 l 3.21159,1.60628 4.33409,-4.33189 c 2.38376,-2.38254 4.32947,-4.33652 4.32382,-4.34218 z"
+										id="path1"
+										inkscape:export-filename="path1.svg"
+										inkscape:export-xdpi="95.999954"
+										inkscape:export-ydpi="95.999954" /></g></svg>
+								</div>
+								<div>
+									<svg
+										width="16.933331mm"
+										height="16.933382mm"
+										viewBox="0 0 16.933331 16.933382"
+										version="1.1"
+										id="svg1"
+										xml:space="preserve"
+										xmlns="http://www.w3.org/2000/svg"
+										class="w-7 h-7"><sodipodi:namedview
+											id="namedview1"
+											pagecolor="#ffffff"
+											bordercolor="#000000"
+											borderopacity="0.25"
+											inkscape:showpageshadow="2"
+											inkscape:pageopacity="0.0"
+											inkscape:pagecheckerboard="0"
+											inkscape:deskcolor="#d1d1d1"
+											inkscape:document-units="mm" /><defs
+											id="defs1" /><g
+											id="layer1"
+											transform="translate(-21.101908,-122.12909)"><path
+											style="fill:#000000;stroke-width:0.146085"
+											d="m 23.743965,139.0313 c -0.967,-0.10957 -1.873901,-0.58518 -2.292759,-1.20242 -0.380646,-0.56092 -0.348635,0.10443 -0.348635,-7.24604 0,-7.35048 -0.03201,-6.68513 0.348635,-7.24606 0.356213,-0.52491 1.074233,-0.95596 1.908966,-1.14599 0.258533,-0.0589 0.542219,-0.0617 6.208403,-0.0617 5.666183,0 5.949868,0.003 6.208401,0.0617 0.834733,0.19003 1.552754,0.62108 1.908967,1.14599 0.380647,0.56093 0.348634,-0.10442 0.348634,7.24606 0,6.11545 -0.0051,6.54847 -0.07889,6.74974 -0.340378,0.9279 -1.403845,1.60223 -2.691445,1.7066 l -0.286975,0.0233 -2.704345,-1.98151 -2.704346,-1.98151 -2.697974,1.97684 c -2.579252,1.88985 -2.704921,1.97665 -2.855864,1.97234 -0.08684,-0.002 -0.208689,-0.0103 -0.270773,-0.0173 z m 3.126636,-3.08 2.697974,-1.97684 2.702979,1.98051 2.702979,1.98051 0.198038,-0.0232 c 0.52388,-0.0613 1.027874,-0.35145 1.221806,-0.70343 l 0.105032,-0.19064 v -6.43541 -6.43542 l -0.105032,-0.19064 c -0.134328,-0.2438 -0.466643,-0.4959 -0.808396,-0.61325 l -0.260525,-0.0895 h -5.756881 -5.756883 l -0.260523,0.0895 c -0.341755,0.11735 -0.67407,0.36945 -0.808398,0.61325 l -0.10503,0.19064 v 6.43542 6.43541 l 0.10503,0.19064 c 0.212259,0.38525 0.793371,0.69579 1.339693,0.71593 0.06199,0.002 0.933303,-0.61445 2.788137,-1.97352 z"
+											id="path2" /></g>
+									</svg>
+								</div>
+							</div>
+							<span class="font-bold mr-3 text-md">1,000 likes</span>
+							<p class="text-md "><span class="font-bold text-black">indiebeer.uruapan</span> Cata de Cervezas Barrel Aged guiada por nuestro buen amigo y Beer Sommelier <span class="text-[#00376B]">@pedrinkbs @pedrocirraptor</span> en <span class="text-[#00376B]">@indiebeer.uruapan</span>. <br> Una experiencia muy profunda y enriquecedora del mundo de las cervezas envejecidas en Barrica 🍻👏
+							</p>
+						</div>
+					</div>
+					<div class="group-hover:brightness-100 flex items-center justify-center text-white text-3xl font-bold absolute inset-0 opacity-0 group-hover:opacity-100 duration-500">
+						<svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#ffffff"></path> <path d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z" fill="#ffffff"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z" fill="#ffffff"></path> </g></svg>
+					</div>
+				</a>
 			</div>
+
+
+			<!-- Facebook Post -->
+			<div class="w-[25rem] h-[38rem] md:scale-90 lg:scale-[0.80] xl:scale-100 group duration-500 hover:scale-105">
+				<a href="https://www.facebook.com/indiebeerupn/">
+					<div class="w-[25rem] h-[38rem] group-hover:brightness-50 bg-white rounded-xl duration-500">
+						<div class="flex justify-between items-center px-4 pt-2">
+							<div class="flex justify-start items-center">
+								<Image src={facebookProfilePic} alt="Instagram Profile Pic" width={100} height={100} class="h-10 w-10 rounded-full mr-2"/>
+								<div class="flex-nowrap">
+									<h4 class="font-bold">indie_beer</h4>
+									<p class="text-xs">22 de junio</p>
+								</div>
+							</div>
+							<div class="flex items-center h-7 w-7">
+								<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#000000" class="bi bi-three-dots-vertical"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path> </g></svg>
+							</div>
+						</div>
+						<div>
+							<p class="px-4 pt-2 text-sm">Destape Alert  📣<br>Ya pinchado y bien ready  ✅️  en <span class="text-[#5AA7FF]">@indiebeer.uruapan</span> un barrilito de esos que solo aquí les podemos ofrecer 🍺🌟<br><span class="text-[#5AA7FF]">@kasteel_bier</span><br>Roug… <span class="text-[#65676b]">Ver más</span></p>
+						</div>
+						<div class="px-4 py-2">
+							<Image src={facebookPost} alt="Product" class="h-[23rem] w-[25rem] object-cover" />
+						</div>
+						<hr class="border-gray-200 my-2" />
+						<div class="px-4 w-[25rem]">
+							<div class="flex justify-between items-center ">
+								<div class="flex items-center gap-x-2">
+									<i data-visualcompletion="css-img" class="x1b0d499 x1d69dk1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yw/r/0uJRGjrhtZ5.png&quot;); background-position: 0px -697px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>
+									<p>Me gusta</p>
+								</div>
+								<div class="flex items-center gap-x-2">
+									<i data-visualcompletion="css-img" class="x1b0d499 x1d69dk1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yw/r/0uJRGjrhtZ5.png&quot;); background-position: 0px -508px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>
+									<p>Comentar</p>
+								</div>
+								<div class="flex items-center gap-x-2">
+									<i data-visualcompletion="css-img" class="x1b0d499 x1d69dk1" style="background-image: url(&quot;https://static.xx.fbcdn.net/rsrc.php/v3/yw/r/0uJRGjrhtZ5.png&quot;); background-position: 0px -844px; background-size: auto; width: 20px; height: 20px; background-repeat: no-repeat; display: inline-block;"></i>
+									<p>Compartir</p>
+	
+								</div>
+							</div>
+						</div>
+						<hr class="border-gray-200 my-2" />
+					</div>
+					<div class="group-hover:brightness-100 flex items-center justify-center text-white text-3xl font-bold absolute inset-0 opacity-0 group-hover:opacity-100 duration-500">
+						<svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M20 1C21.6569 1 23 2.34315 23 4V20C23 21.6569 21.6569 23 20 23H4C2.34315 23 1 21.6569 1 20V4C1 2.34315 2.34315 1 4 1H20ZM20 3C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H15V13.9999H17.0762C17.5066 13.9999 17.8887 13.7245 18.0249 13.3161L18.4679 11.9871C18.6298 11.5014 18.2683 10.9999 17.7564 10.9999H15V8.99992C15 8.49992 15.5 7.99992 16 7.99992H18C18.5523 7.99992 19 7.5522 19 6.99992V6.31393C19 5.99091 18.7937 5.7013 18.4813 5.61887C17.1705 5.27295 16 5.27295 16 5.27295C13.5 5.27295 12 6.99992 12 8.49992V10.9999H10C9.44772 10.9999 9 11.4476 9 11.9999V12.9999C9 13.5522 9.44771 13.9999 10 13.9999H12V21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3H20Z" fill="#ffffff"></path> </g></svg>
+					</div>
+				</a>
+			</div>
+
+			<!-- WhatsApp Business -->
+			<div class="w-[25rem] h-[38rem] md:scale-90 lg:scale-[0.80] xl:scale-100 group duration-500 hover:scale-105">
+				<a href="https://api.whatsapp.com/send?phone=%2B524521493606&context=ARDhGTB9YuhRAeZSQVE7cdSqTN5m2cMfzk8hV_RGQU7U5TKx53NTz35Mk3-Q1_UhCwIW1O2PGfxOcduu4oVy3uHQKihqId_6Ov_C1L4Lu02ucPaYiocjU4KOTmvS8R6s4TnU8VJF7eVmcN3VlaDlrvdrmA&source=FB_Page&app=facebook&entry_point=page_cta&fbclid=IwZXh0bgNhZW0CMTAAAR3AvdQTKLWrk-YMznA8oZwWT7YXNZxhqdLmSe_v4mlYh3XfkooUF5lXBXU_aem_ZmFrZWR1bW15MTZieXRlcw">
+					<div class="w-[25rem] h-[38rem] group-hover:brightness-50 bg-white rounded-xl duration-500">
+						<div class="flex justify-between items-center pl-4 pt-2 bg-[#004e45] rounded-t-xl h-[4rem]">
+							<div class="flex justify-start items-center text-white">
+								<Image src={facebookProfilePic} alt="Instagram Profile Pic" width={100} height={100} class="h-10 w-10 rounded-full mr-2"/>
+								<div class="flex-nowrap">
+									<h4 class="font-bold">indie_beer</h4>
+									<p class="text-xs">En linea</p>
+								</div>
+							</div>
+							<div class="flex items-center gap-4">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;" ><path d="M18 7c0-1.103-.897-2-2-2H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-3.333L22 17V7l-4 3.333V7z"></path></svg>
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><path d="m20.487 17.14-4.065-3.696a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.859 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766C11.305 20.707 16.323 21 17.705 21c.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.085-1.39z"></path></svg>
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>
+								<div class="flex justify-end">
+								</div>
+							</div>
+						</div>
+						<div class="" style={`background-image: url(${optimizedWhatsAppBg.src});`}>							
+						</div>
+						<div class="chat">
+						  <div class="chat-container">
+							<div class="conversation rounded-b-lg">
+							  <div class="conversation-container">
+								<div class="message received">¡Hey!<span class="metadata"><span class="time"></span></span>
+								</div>
+								<div class="message received">
+								  <span id="random">¡Bienvenido a Indie Beer!</span>
+								  <span class="metadata"><span class="time"></span></span>
+								</div>
+								<div class="message received">
+									<span id="random">¿Qué te vamos a servir hoy?</span>
+									<span class="metadata"><span class="time"></span></span>
+								  </div>
+							  </div>
+							  <form class="conversation-compose">
+								<div class="emoji">
+								  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="smiley" x="3147" y="3209"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.153 11.603c.795 0 1.44-.88 1.44-1.962s-.645-1.96-1.44-1.96c-.795 0-1.44.88-1.44 1.96s.645 1.965 1.44 1.965zM5.95 12.965c-.027-.307-.132 5.218 6.062 5.55 6.066-.25 6.066-5.55 6.066-5.55-6.078 1.416-12.13 0-12.13 0zm11.362 1.108s-.67 1.96-5.05 1.96c-3.506 0-5.39-1.165-5.608-1.96 0 0 5.912 1.055 10.658 0zM11.804 1.01C5.61 1.01.978 6.034.978 12.23s4.826 10.76 11.02 10.76S23.02 18.424 23.02 12.23c0-6.197-5.02-11.22-11.216-11.22zM12 21.355c-5.273 0-9.38-3.886-9.38-9.16 0-5.272 3.94-9.547 9.214-9.547a9.548 9.548 0 0 1 9.548 9.548c0 5.272-4.11 9.16-9.382 9.16zm3.108-9.75c.795 0 1.44-.88 1.44-1.963s-.645-1.96-1.44-1.96c-.795 0-1.44.878-1.44 1.96s.645 1.963 1.44 1.963z" fill="#7d8489"/></svg>
+								</div>
+								<input class="input-msg" name="input" placeholder="Escribe un mensaje" autocomplete="off" autofocus></input>
+								<div class="photo">
+								  <i class="zmdi zmdi-camera"></i>
+								</div>
+								<button class="send">
+									<div class="circle">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><path d="m21.426 11.095-17-8A1 1 0 0 0 3.03 4.242l1.212 4.849L12 12l-7.758 2.909-1.212 4.849a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81z"></path></svg>
+									</div>
+								  </button>
+							  </form>
+							</div>
+						  </div>
+						</div>
+					</div>
+					<div class="group-hover:brightness-100 flex items-center justify-center text-white text-3xl font-bold absolute inset-0 opacity-0 group-hover:opacity-100 duration-500">
+						<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.403 5.633A8.919 8.919 0 0 0 12.053 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.582.413 3.126 1.198 4.488L3 21.116l4.759-1.249a8.981 8.981 0 0 0 4.29 1.093h.004c4.947 0 8.975-4.027 8.977-8.977a8.926 8.926 0 0 0-2.627-6.35m-6.35 13.812h-.003a7.446 7.446 0 0 1-3.798-1.041l-.272-.162-2.824.741.753-2.753-.177-.282a7.448 7.448 0 0 1-1.141-3.971c.002-4.114 3.349-7.461 7.465-7.461a7.413 7.413 0 0 1 5.275 2.188 7.42 7.42 0 0 1 2.183 5.279c-.002 4.114-3.349 7.462-7.461 7.462m4.093-5.589c-.225-.113-1.327-.655-1.533-.73-.205-.075-.354-.112-.504.112s-.58.729-.711.879-.262.168-.486.056-.947-.349-1.804-1.113c-.667-.595-1.117-1.329-1.248-1.554s-.014-.346.099-.458c.101-.1.224-.262.336-.393.112-.131.149-.224.224-.374s.038-.281-.019-.393c-.056-.113-.505-1.217-.692-1.666-.181-.435-.366-.377-.504-.383a9.65 9.65 0 0 0-.429-.008.826.826 0 0 0-.599.28c-.206.225-.785.767-.785 1.871s.804 2.171.916 2.321c.112.15 1.582 2.415 3.832 3.387.536.231.954.369 1.279.473.537.171 1.026.146 1.413.089.431-.064 1.327-.542 1.514-1.066.187-.524.187-.973.131-1.067-.056-.094-.207-.151-.43-.263"></path></svg>
+					</div>
+				</a>
+			</div>
+
 		</section>
+
 	</main>
 </Layout>
 
@@ -235,5 +444,298 @@ const info = await fetchApi<heroPageProps>({
 	}
 	#heroSubtitle {
 		font-family: 'Anonymous Pro', monospace;
+	}
+	/* Chat */
+
+	.chat {
+	height: calc(100% - 64px);
+	}
+
+	.chat-container {
+	height: 100%;
+	}
+
+	/* Conversation */
+
+	.conversation {
+	height: calc(100%);
+	position: relative;
+	background: #efe7dd url("https://cloud.githubusercontent.com/assets/398893/15136779/4e765036-1639-11e6-9201-67e728e86f39.jpg") repeat;
+	z-index: 0;
+	}
+
+	.conversation ::-webkit-scrollbar {
+	transition: all .5s;
+	width: 5px;
+	height: 1px;
+	z-index: 10;
+	}
+
+	.conversation ::-webkit-scrollbar-track {
+	background: transparent;
+	}
+
+	.conversation ::-webkit-scrollbar-thumb {
+	background: #b3ada7;
+	}
+
+	.conversation .conversation-container {
+	height: calc(100% - 68px);
+	box-shadow: inset 0 10px 10px -10px #000000;
+	overflow-x: hidden;
+	padding: 0 16px;
+	}
+
+	.conversation .conversation-container:after {
+	content: "";
+	display: table;
+	clear: both;
+	}
+
+	/* Messages */
+
+	.message {
+	color: #000;
+	clear: both;
+	line-height: 18px;
+	font-size: 15px;
+	padding: 8px;
+	position: relative;
+	margin: 8px 0;
+	max-width: 85%;
+	word-wrap: break-word;
+	z-index: -1;
+	}
+
+	.message:after {
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 0;
+	border-style: solid;
+	}
+
+	.metadata {
+	display: inline-block;
+	float: right;
+	padding: 0 0 0 7px;
+	position: relative;
+	bottom: -4px;
+	}
+
+	.metadata .time {
+	color: rgba(0, 0, 0, .45);
+	font-size: 11px;
+	display: inline-block;
+	}
+
+	.metadata .tick {
+	display: inline-block;
+	margin-left: 2px;
+	position: relative;
+	top: 4px;
+	height: 16px;
+	width: 16px;
+	}
+
+	.metadata .tick svg {
+	position: absolute;
+	transition: .5s ease-in-out;
+	}
+
+	.metadata .tick svg:first-child {
+	-webkit-backface-visibility: hidden;
+			backface-visibility: hidden;
+	-webkit-transform: perspective(800px) rotateY(180deg);
+			transform: perspective(800px) rotateY(180deg);
+	}
+
+	.metadata .tick svg:last-child {
+	-webkit-backface-visibility: hidden;
+			backface-visibility: hidden;
+	-webkit-transform: perspective(800px) rotateY(0deg);
+			transform: perspective(800px) rotateY(0deg);
+	}
+
+	.metadata .tick-animation svg:first-child {
+	-webkit-transform: perspective(800px) rotateY(0);
+			transform: perspective(800px) rotateY(0);
+	}
+
+	.metadata .tick-animation svg:last-child {
+	-webkit-transform: perspective(800px) rotateY(-179.9deg);
+			transform: perspective(800px) rotateY(-179.9deg);
+	}
+
+	.message:first-child {
+	margin: 16px 0 8px;
+	}
+
+	.message.received {
+	background: #fff;
+	border-radius: 0px 5px 5px 5px;
+	float: left;
+	}
+
+	.message.received .metadata {
+	padding: 0 0 0 16px;
+	}
+
+	.message.received:after {
+	border-width: 0px 10px 10px 0;
+	border-color: transparent #fff transparent transparent;
+	top: 0;
+	left: -10px;
+	}
+
+	.message.sent {
+	background: #e1ffc7;
+	border-radius: 5px 0px 5px 5px;
+	float: right;
+	}
+
+	.message.sent:after {
+	border-width: 0px 0 10px 10px;
+	border-color: transparent transparent transparent #e1ffc7;
+	top: 0;
+	right: -10px;
+	}
+
+	/* Compose */
+
+	.conversation-compose {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	overflow: hidden;
+	height: 50px;
+	width: 100%;
+	z-index: 2;
+	}
+
+	.conversation-compose div,
+	.conversation-compose input {
+	background: #fff;
+	height: 100%;
+	}
+
+	.conversation-compose .emoji {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: white;
+	border-radius: 5px 0 0 5px;
+	flex: 0 0 auto;
+	margin-left: 8px;
+	width: 48px;
+	}
+
+	.conversation-compose .input-msg {
+	border: 0;
+	flex: 1 1 auto;
+	font-size: 16px;
+	margin: 0;
+	outline: none;
+	min-width: 50px;
+	}
+
+	.conversation-compose .photo {
+	flex: 0 0 auto;
+	border-radius: 0 0 5px 0;
+	text-align: center;
+	position: relative;
+	width: 48px;
+	}
+
+	.conversation-compose .photo:after {
+	border-width: 0px 0 10px 10px;
+	border-color: transparent transparent transparent #fff;
+	border-style: solid;
+	position: absolute;
+	width: 0;
+	height: 0;
+	content: "";
+	top: 0;
+	right: -10px;
+	}
+
+	.conversation-compose .photo i {
+	display: block;
+	color: #7d8488;
+	font-size: 24px;
+	transform: translate(-50%, -50%);
+	position: relative;
+	top: 50%;
+	left: 50%;
+	}
+
+	.conversation-compose .send {
+	background: transparent;
+	border: 0;
+	cursor: pointer;
+	flex: 0 0 auto;
+	margin-left: 8px;
+	margin-right: 8px;
+	padding: 0;
+	position: relative;
+	outline: none;
+	}
+
+	.conversation-compose .send .circle {
+	background: #008a7c;
+	border-radius: 50%;
+	color: #fff;
+	position: relative;
+	width: 48px;
+	height: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	}
+
+	.conversation-compose .send .circle i {
+	font-size: 24px;
+	margin-left: 5px;
+	}
+
+	/* Small Screens */
+
+	@media (max-width: 768px) {
+	.marvel-device.nexus5 {
+		border-radius: 0;
+		flex: none;
+		padding: 0;
+		max-width: none;
+		overflow: hidden;
+		height: 100%;
+		width: 100%;
+	}
+
+	.marvel-device > .screen .chat {
+		visibility: visible;
+	}
+
+	.marvel-device {
+		visibility: hidden;
+	}
+
+	.marvel-device .status-bar {
+		display: none;
+	}
+
+	.screen-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	.conversation {
+		height: calc(100% - 55px);
+	}
+	.conversation .conversation-container {
+		height: calc(100%);
+	}
 	}
 </style>
